@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">Teman KB</string>
+
+    <string name="Tujuan_KB">
+         • Mencegah kehamilan yang tidak direncanakan\n• Mengatur jarak kehamilan\n• Menjaga kesehatan ibu dan anak\n• Meningkatkan kesejahteraan keluarga"
+     </string>
+
+    <string name="Jenis_Metode_KB">
+         • Kb hormonal: Pil KB, Suntik Kb, Implan\n• KB non-hormonal: Kondom, IUD (Spiral). Metode alami \n• KB Permanen: Tubektomi dan Vasektomi\n"
+     </string>
+
+    <string name="manfaat_KB">
+         • Menurunkan risiko kehamilan berisiko\n• Membantu perencanaan masa depan keluarga \n• Mendukung program kesehatan ibu daan anak\n"
+     </string>
+
+    <string name="riwayatmedis">
+         1. Tekanan darah tinggi berat (>180/110)\n2. Penyakit Jantung \n3. Gangguan pembekuan darah\n"
+     </string>
+
 </resources>
