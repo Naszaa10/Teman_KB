@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "248059999749",
+    "firebase_url": "https://temankb-d9912-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "temankb-d9912",
+    "storage_bucket": "temankb-d9912.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:248059999749:android:ca5bf5608782ae936f4e6c",
+        "android_client_info": {
+          "package_name": "com.example.temankb"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFj0XyJCAR5JvbJOLv7_ggLyRoJpG--G8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
