@@ -2,6 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="primary">#FF637DC6</color>
-    <color name="dark">#FF2C3E50</color>
+    <color name="tombol">#FF779E</color>
+    <color name="bg">#FFDADF</color>
+    <color name="second">#FFAAB8</color>
 </resources>
