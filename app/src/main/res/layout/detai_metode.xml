@@ -10,16 +10,16 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardContainer"
         android:layout_width="0dp"
-        android:layout_marginTop="25dp"
-        android:backgroundTint="@color/material_dynamic_secondary90"
         android:layout_height="600dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/material_dynamic_secondary90"
         app:cardCornerRadius="16dp"
         app:cardElevation="6dp"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/btnNext"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="16dp">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -34,35 +34,35 @@
 
                 <!-- CONTOH KONTEN PANJANG -->
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="Judul Form"
                     android:textSize="24sp"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:text="Isi pertanyaan 1..."
-                    android:layout_marginTop="16dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Isi pertanyaan 1..." />
 
                 <TextView
-                    android:text="Isi pertanyaan 2..."
-                    android:layout_marginTop="16dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Isi pertanyaan 2..." />
 
                 <TextView
-                    android:text="Isi pertanyaan 3..."
-                    android:layout_marginTop="16dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Isi pertanyaan 3..." />
 
                 <TextView
-                    android:text="Isi pertanyaan 4..."
-                    android:layout_marginTop="16dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Isi pertanyaan 4..." />
 
             </LinearLayout>
         </ScrollView>
@@ -70,15 +70,19 @@
 
     <!-- ================= BUTTON NEXT (DI LUAR CARD) ================= -->
     <Button
-        android:id="@+id/btnNext"
-        android:layout_width="0dp"
-        android:layout_height="52dp"
-        android:text="Next"
+        android:id="@+id/btnNextPage2"
+        android:layout_width="355dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="@color/tombol"
+        android:text="Lanjut"
+        android:textSize="18sp"
         android:textStyle="bold"
-        android:textColor="@android:color/white"
-        android:backgroundTint="#FF0A00"
+        app:cornerRadius="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/cardContainer" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

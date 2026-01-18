@@ -53,14 +53,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvLoginTitle"
             app:startIconDrawable="@android:drawable/ic_dialog_email"
-            app:startIconTint="#1E88E5">
+            app:startIconTint="@color/tombol">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
-                android:textColor="#333333" />
+                android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Password Input -->
@@ -74,30 +74,30 @@
             app:boxStrokeColor="#1E88E5"
             android:textColorHint="@color/black"
             app:endIconMode="password_toggle"
-            app:endIconTint="#1E88E5"
+            app:endIconTint="@color/tombol"
             app:hintTextColor="#1E88E5"
             app:layout_constraintTop_toBottomOf="@id/tilEmail"
             app:startIconDrawable="@android:drawable/ic_lock_lock"
-            app:startIconTint="#1E88E5">
+            app:startIconTint="@color/tombol">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:textColor="#333333" />
+                android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Login Button -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:backgroundTint="@color/tombol"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="20dp"
             android:text="Login"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:cornerRadius="8dp"
             app:layout_constraintTop_toBottomOf="@id/tilPassword" />

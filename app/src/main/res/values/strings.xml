@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Teman KB</string>
 
+    <string name="KB">
+        Keluarga Berencana (KB) adalah upaya untuk mengatur jumlah dan jarak kelahiran anak dengan menggunakan metode kontrasepsi, agar tercapai keluarga yang sehat, sejahtera, dan berkualitas.
+    </string>
+
     <string name="Tujuan_KB">
          • Mencegah kehamilan yang tidak direncanakan\n• Mengatur jarak kehamilan\n• Menjaga kesehatan ibu dan anak\n• Meningkatkan kesejahteraan keluarga"
      </string>
