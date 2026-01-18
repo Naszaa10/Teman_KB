@@ -9,12 +9,14 @@
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="24dp">
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="24dp">
+        tools:layout_editor_absoluteY="24dp"
+        tools:context=".preferensi_pengguna">
 
         <!-- ================= JUDUL ================= -->
 
@@ -177,7 +179,7 @@
 
         <!-- ================= BUTTON NEXT ================= -->
         <Button
-            android:id="@+id/btnNextPage2"
+            android:id="@+id/btnPreferensi"
             android:layout_width="355dp"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"

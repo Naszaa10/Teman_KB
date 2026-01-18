@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
 
     private val tvTitle by lazy { findViewById<TextView>(R.id.textView) }
     private val tvSubtitle by lazy { findViewById<TextView>(R.id.textView2) }
-    private val btnMulaiKonsultasi by lazy { findViewById<AppCompatButton>(R.id.button) }
+    private val btnMulaiKonsultasi by lazy { findViewById<AppCompatButton>(R.id.btnNextPage2) }
 
     private var userName: String? = null
     private var userEmail: String? = null
@@ -41,26 +41,25 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateUI() {
         userName?.let { name ->
-            // Update subtitle dengan nama user
-            tvSubtitle.text = "Selamat datang, $name!\nPilih alat kontrasepsi yang sesuai untuk Anda"
+            tvSubtitle.text =
+                "Selamat datang, $name!\nPilih alat kontrasepsi yang sesuai untuk Anda"
         }
     }
 
     private fun setupListeners() {
-        // Tombol Mulai Konsultasi
+        // Tombol Mulai Konsultasi -> ke Tentang KB
         btnMulaiKonsultasi.setOnClickListener {
             Log.d(TAG, "Tombol Mulai Konsultasi diklik oleh: $userName")
 
-            // TODO: Navigasi ke halaman konsultasi
-            // Intent(this, KonsultasiActivity::class.java).apply {
-            //     putExtra("USER_ID", userId)
-            //     putExtra("USER_NAME", userName)
-            //     putExtra("USER_EMAIL", userEmail)
-            //     startActivity(this)
-            // }
+            val intent = Intent(this, tentangkb::class.java).apply {
+                putExtra("USER_ID", userId)
+                putExtra("USER_NAME", userName)
+                putExtra("USER_EMAIL", userEmail)
+            }
+            startActivity(intent)
         }
 
-        // Long press pada title untuk logout (hidden feature)
+        // Long press title untuk logout
         tvTitle.setOnLongClickListener {
             showLogoutDialog()
             true
@@ -81,22 +80,9 @@ class MainActivity : AppCompatActivity() {
     private fun logout() {
         Log.d(TAG, "User $userName melakukan logout")
 
-        Intent(this, LoginActivity::class.java).apply {
-            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(this)
-        }
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
         finish()
-    }
-
-    override fun onBackPressed() {
-        // Prevent back to login
-        AlertDialog.Builder(this)
-            .setTitle("Keluar Aplikasi")
-            .setMessage("Apakah Anda yakin ingin keluar?")
-            .setPositiveButton("Ya") { _, _ ->
-                finishAffinity() // Tutup semua activity
-            }
-            .setNegativeButton("Batal", null)
-            .show()
     }
 }

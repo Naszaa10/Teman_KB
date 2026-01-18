@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TemanKB">
         <activity
+            android:name=".preferensi_pengguna"
+            android:exported="false" />
+        <activity
+            android:name=".ProfilPenggunaActivity"
+            android:exported="false" />
+        <activity
             android:name=".hasilrekomendasi"
             android:exported="false" />
         <activity
@@ -21,8 +27,9 @@
             android:name=".tentangkb"
             android:exported="false" />
         <activity
-            android:name=".Model.UserActivity"
-            android:exported="false" />
+            android:name=".User"
+            android:exported="false"
+            tools:ignore="Instantiatable" />
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />

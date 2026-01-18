@@ -13,7 +13,6 @@
         android:layout_height="match_parent"
         tools:context=".tentangkb">
 
-
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
@@ -238,7 +237,7 @@
         </androidx.cardview.widget.CardView>
 
         <Button
-            android:id="@+id/btnNextPage2"
+            android:id="@+id/btnlanjutkb"
             android:layout_width="355dp"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
