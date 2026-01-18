@@ -16,7 +16,6 @@
         android:backgroundTint="@color/material_dynamic_secondary90"
         app:cardCornerRadius="16dp"
         app:cardElevation="6dp"
-        app:layout_constraintBottom_toTopOf="@id/btnNext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">

@@ -81,7 +81,7 @@
             android:layout_marginTop="16dp"
             android:hint="Email"
             app:boxStrokeColor="#1E88E5"
-            app:hintTextColor="tom"
+            app:hintTextColor="@color/tombol"
             app:layout_constraintTop_toBottomOf="@id/tilName"
             app:startIconDrawable="@android:drawable/ic_dialog_email"
             app:startIconTint="@color/tombol">
