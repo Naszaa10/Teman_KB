@@ -2,8 +2,7 @@ package com.example.temankb
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.database.*
@@ -13,73 +12,140 @@ class ProfilPenggunaActivity : AppCompatActivity() {
     private lateinit var inputNama: TextInputEditText
     private lateinit var inputUmur: TextInputEditText
     private lateinit var btnLanjut: Button
+    private lateinit var btnBack: ImageView
+
+    private lateinit var rgHamil: RadioGroup
+    private lateinit var rgKanker: RadioGroup
+    private lateinit var rgPendarahan: RadioGroup
 
     private var userId: String? = null
-    private var userName: String? = null
+    private var userEmail: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profil_pengguna)
 
+        // ==== INIT VIEW ====
         inputNama = findViewById(R.id.inputNama)
         inputUmur = findViewById(R.id.inputUmur)
         btnLanjut = findViewById(R.id.btnProfil)
+        btnBack = findViewById(R.id.btnBack)
 
-        // Ambil user pertama dari database
-        val dbUsers = FirebaseDatabase.getInstance().reference.child("users")
-        dbUsers.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    val firstUser = snapshot.children.first()
-                    userId = firstUser.key
-                    userName = firstUser.child("name").getValue(String::class.java)
-                    inputNama.setText(userName)
-                } else {
-                    Toast.makeText(this@ProfilPenggunaActivity, "User tidak ditemukan", Toast.LENGTH_SHORT).show()
-                    finish()
-                }
-            }
+        rgHamil = findViewById(R.id.radioGroup3)
+        rgKanker = findViewById(R.id.radioGroup4)
+        rgPendarahan = findViewById(R.id.radioGroup5)
 
-            override fun onCancelled(error: DatabaseError) {}
-        })
+        // ==== BACK ====
+        btnBack.setOnClickListener {
+            finish()
+        }
+
+        // ==== AMBIL EMAIL DARI LOGIN ====
+        userEmail = intent.getStringExtra("EMAIL_LOGIN")
+        if (userEmail == null) {
+            Toast.makeText(this, "Email tidak ditemukan", Toast.LENGTH_SHORT).show()
+            finish()
+            return
+        }
+
+        ambilUserDariFirebase(userEmail!!)
 
         btnLanjut.setOnClickListener {
-            saveProfil()
+            validasiDanSimpan()
         }
     }
 
-    private fun saveProfil() {
-        if (userId == null) return
+    // 🔹 Ambil userId & nama
+    private fun ambilUserDariFirebase(email: String) {
+        FirebaseDatabase.getInstance().reference.child("users")
+            .orderByChild("email").equalTo(email)
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (!snapshot.exists()) {
+                        Toast.makeText(this@ProfilPenggunaActivity, "User tidak ditemukan", Toast.LENGTH_SHORT).show()
+                        finish()
+                        return
+                    }
 
-        val umurText = inputUmur.text.toString()
+                    for (userSnap in snapshot.children) {
+                        userId = userSnap.key
+                        val nama = userSnap.child("name").value.toString()
+                        inputNama.setText(nama)
+                        break
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {}
+            })
+    }
+
+    // 🔹 VALIDASI INPUT
+    private fun validasiDanSimpan() {
+        val nama = inputNama.text.toString().trim()
+        val umurText = inputUmur.text.toString().trim()
+
+        if (nama.isEmpty()) {
+            inputNama.error = "Nama wajib diisi"
+            return
+        }
+
         if (umurText.isEmpty()) {
-            Toast.makeText(this, "Isi umur terlebih dahulu", Toast.LENGTH_SHORT).show()
+            inputUmur.error = "Umur wajib diisi"
             return
         }
 
         val umur = umurText.toIntOrNull()
         if (umur == null) {
-            Toast.makeText(this, "Umur harus angka", Toast.LENGTH_SHORT).show()
+            inputUmur.error = "Umur harus angka"
             return
         }
 
-        // Simpan awal ke kondisi_medis
-        val kondisiAwal = KondisiMedis(
-            userId = userId,
-            usia = umur,
-            nama = userName ?: "",
-            timestamp = System.currentTimeMillis()
+        if (rgHamil.checkedRadioButtonId == -1 ||
+            rgKanker.checkedRadioButtonId == -1 ||
+            rgPendarahan.checkedRadioButtonId == -1
+        ) {
+            Toast.makeText(this, "Semua pertanyaan medis wajib diisi", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val hamil = findViewById<RadioButton>(rgHamil.checkedRadioButtonId).text.toString()
+        val kanker = findViewById<RadioButton>(rgKanker.checkedRadioButtonId).text.toString()
+        val pendarahan = findViewById<RadioButton>(rgPendarahan.checkedRadioButtonId).text.toString()
+
+        simpanKeFirebase(nama, umur, hamil, kanker, pendarahan)
+    }
+
+    // 🔹 SIMPAN & PINDAH PAGE
+    private fun simpanKeFirebase(
+        nama: String,
+        umur: Int,
+        hamil: String,
+        kanker: String,
+        pendarahan: String
+    ) {
+        val data = mapOf(
+            "userId" to userId,
+            "nama" to nama,
+            "usia" to umur,
+            "hamil" to hamil,
+            "kanker_payudara" to kanker,
+            "pendarahan" to pendarahan,
+            "timestamp" to System.currentTimeMillis()
         )
 
-        val db = FirebaseDatabase.getInstance().reference.child("kondisi_medis").child(userId!!)
-        db.setValue(kondisiAwal).addOnSuccessListener {
-            // Lanjut ke KondisiReproduksi
-            val intent = Intent(this, kondisireproduksi::class.java)
-            intent.putExtra("userId", userId)
-            startActivity(intent)
-            finish()
-        }.addOnFailureListener { e ->
-            Toast.makeText(this, "Gagal simpan: ${e.message}", Toast.LENGTH_LONG).show()
-        }
+        FirebaseDatabase.getInstance().reference
+            .child("kondisi_medis")
+            .child(userId!!)
+            .setValue(data)
+            .addOnSuccessListener {
+
+                val intent = Intent(this, kondisireproduksi::class.java)
+                intent.putExtra("userId", userId)
+                startActivity(intent)
+                // ❌ JANGAN finish()
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, "Gagal menyimpan data", Toast.LENGTH_SHORT).show()
+            }
     }
 }

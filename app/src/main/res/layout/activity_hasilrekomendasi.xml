@@ -136,13 +136,16 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvmedis"
-            android:layout_width="355dp"
-            android:layout_height="wrap_content"
+            android:layout_width="335dp"
+            android:layout_height="511dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.488"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/card2"
-            app:layout_constraintVertical_bias="0.058" />
+            app:layout_constraintTop_toBottomOf="@id/card2"
+            app:layout_constraintVertical_bias="0.0" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

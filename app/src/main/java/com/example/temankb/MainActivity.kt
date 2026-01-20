@@ -7,16 +7,17 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
+import com.google.firebase.database.*
 
 class MainActivity : AppCompatActivity() {
 
-    private val tvTitle by lazy { findViewById<TextView>(R.id.textView) }
-    private val tvSubtitle by lazy { findViewById<TextView>(R.id.textView2) }
-    private val btnMulaiKonsultasi by lazy { findViewById<AppCompatButton>(R.id.btnNextPage2) }
+    private lateinit var tvTitle: TextView
+    private lateinit var tvSubtitle: TextView
+    private lateinit var btnMulaiKonsultasi: AppCompatButton
 
+    private var userId: String? = null
     private var userName: String? = null
     private var userEmail: String? = null
-    private var userId: String? = null
 
     companion object {
         private const val TAG = "MainActivity"
@@ -26,40 +27,73 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        getUserData()
-        updateUI()
+        tvTitle = findViewById(R.id.textView)
+        tvSubtitle = findViewById(R.id.textView2)
+        btnMulaiKonsultasi = findViewById(R.id.btnNextPage2)
+
+        // 🔑 Ambil email dari LoginActivity
+        userEmail = intent.getStringExtra("EMAIL_LOGIN")
+
+        if (userEmail == null) {
+            Log.e(TAG, "Email login tidak ditemukan")
+            finish()
+            return
+        }
+
+        ambilUserDariFirebase(userEmail!!)
         setupListeners()
     }
 
-    private fun getUserData() {
-        userName = intent.getStringExtra("USER_NAME")
-        userEmail = intent.getStringExtra("USER_EMAIL")
-        userId = intent.getStringExtra("USER_ID")
+    // 🔥 Ambil nama user dari Firebase berdasarkan email
+    private fun ambilUserDariFirebase(email: String) {
+        val db = FirebaseDatabase.getInstance().reference.child("users")
 
-        Log.d(TAG, "User data - Name: $userName, Email: $userEmail, ID: $userId")
+        db.orderByChild("email").equalTo(email)
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (!snapshot.exists()) {
+                        Log.e(TAG, "User tidak ditemukan untuk email: $email")
+                        return
+                    }
+
+                    for (userSnap in snapshot.children) {
+                        userId = userSnap.key
+                        userName = userSnap.child("name").getValue(String::class.java)
+                        userEmail = userSnap.child("email").getValue(String::class.java)
+
+                        Log.d(
+                            TAG,
+                            "User ditemukan -> ID: $userId, Name: $userName, Email: $userEmail"
+                        )
+
+                        updateUI()
+                        break
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.e(TAG, "Firebase error: ${error.message}")
+                }
+            })
     }
 
     private fun updateUI() {
-        userName?.let { name ->
-            tvSubtitle.text =
-                "Selamat datang, $name!\nPilih alat kontrasepsi yang sesuai untuk Anda"
-        }
+        tvSubtitle.text =
+            "Selamat datang, ${userName ?: "Pengguna"}!\n" +
+                    "Pilih alat kontrasepsi yang sesuai untuk Anda"
     }
 
     private fun setupListeners() {
-        // Tombol Mulai Konsultasi -> ke Tentang KB
-        btnMulaiKonsultasi.setOnClickListener {
-            Log.d(TAG, "Tombol Mulai Konsultasi diklik oleh: $userName")
 
-            val intent = Intent(this, tentangkb::class.java).apply {
-                putExtra("USER_ID", userId)
-                putExtra("USER_NAME", userName)
-                putExtra("USER_EMAIL", userEmail)
-            }
+        // ➡️ Ke halaman Tentang KB
+        btnMulaiKonsultasi.setOnClickListener {
+            val intent = Intent(this, tentangkb::class.java)
+            intent.putExtra("EMAIL_LOGIN", userEmail)
             startActivity(intent)
         }
 
-        // Long press title untuk logout
+        // 🔙 Long press title untuk logout
         tvTitle.setOnLongClickListener {
             showLogoutDialog()
             true
@@ -78,10 +112,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun logout() {
-        Log.d(TAG, "User $userName melakukan logout")
-
         val intent = Intent(this, LoginActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        intent.flags =
+            Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
         finish()
     }

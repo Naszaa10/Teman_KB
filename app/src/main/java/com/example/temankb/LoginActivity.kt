@@ -10,11 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 
 class LoginActivity : AppCompatActivity() {
 
@@ -36,10 +32,6 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        setupListeners()
-    }
-
-    private fun setupListeners() {
         btnLogin.setOnClickListener { loginUser() }
         tvRegister.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
@@ -68,62 +60,47 @@ class LoginActivity : AppCompatActivity() {
 
     private fun performLogin(email: String, password: String) {
         showLoading(true)
-        Log.d(TAG, "Attempting login for email: $email")
 
         database.orderByChild("email").equalTo(email)
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     showLoading(false)
-                    Log.d(TAG, "Login query result - user exists: ${snapshot.exists()}")
 
-                    when {
-                        !snapshot.exists() -> {
-                            showToast("Email tidak terdaftar!")
-                            Log.d(TAG, "Email not found in database")
-                        }
-                        else -> {
-                            checkPassword(snapshot, password)
-                        }
+                    if (!snapshot.exists()) {
+                        showToast("Email tidak terdaftar")
+                        return
                     }
+
+                    checkPassword(snapshot, password)
                 }
 
                 override fun onCancelled(error: DatabaseError) {
                     showLoading(false)
-                    val errorMsg = "Error: ${error.message}"
-                    Log.e(TAG, errorMsg, error.toException())
-                    showToast(errorMsg)
+                    showToast(error.message)
                 }
             })
     }
 
     private fun checkPassword(snapshot: DataSnapshot, password: String) {
-        snapshot.children.forEach { userSnapshot ->
-            val user = userSnapshot.getValue(User::class.java)
+        for (userSnap in snapshot.children) {
+            val user = userSnap.getValue(User::class.java)?.copy(
+                userId = userSnap.key   // 🔑 WAJIB
+            )
 
-            user?.let {
-                when {
-                    it.password == password -> {
-                        Log.d(TAG, "✅ Login successful for user: ${it.name}")
-                        showToast("Login berhasil! Selamat datang ${it.name}")
-                        navigateToMain(it)
-                        return
-                    }
-                }
+            if (user != null && user.password == password) {
+                showToast("Login berhasil, selamat datang ${user.name}")
+                navigateToProfil(user)
+                return
             }
         }
 
-        // Jika sampai sini, password salah
-        Log.d(TAG, "❌ Invalid password")
-        showToast("Password salah!")
+        showToast("Password salah")
     }
 
-    private fun navigateToMain(user: User) {
-        Intent(this, MainActivity::class.java).apply {
-            putExtra("USER_ID", user.userId)
-            putExtra("USER_NAME", user.name)
-            putExtra("USER_EMAIL", user.email)
-            startActivity(this)
-        }
+    private fun navigateToProfil(user: User) {
+        val intent = Intent(this, MainActivity::class.java)
+        intent.putExtra("EMAIL_LOGIN", user.email)   // 🔑 KONSISTEN
+        startActivity(intent)
         finish()
     }
 
