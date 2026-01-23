@@ -5,8 +5,10 @@ data class User(
     val name: String? = null,
     val email: String? = null,
     val password: String? = null,
+    var role: String? = "user",
     val registeredAt: Long = 0L
 ) {
     // Constructor kosong untuk Firebase (required)
-    constructor() : this(null, null, null, null, 0L)
+    constructor() : this(null, null, null, null, "user" , 0L)
 }
+

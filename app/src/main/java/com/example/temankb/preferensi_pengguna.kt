@@ -44,23 +44,19 @@ class preferensi_pengguna : AppCompatActivity() {
         btnNext = findViewById(R.id.btnPreferensi)
         btnBack = findViewById(R.id.btnBack)
 
-        // ==== BACK (IMAGE) ====
         btnBack.setOnClickListener {
             kembaliKeKondisi()
         }
 
-        // ==== NEXT ====
         btnNext.setOnClickListener {
             simpanPreferensi()
         }
     }
 
-    // 🔙 BACK HP
     override fun onBackPressed() {
         kembaliKeKondisi()
     }
 
-    // 🔁 SATU PINTU BACK
     private fun kembaliKeKondisi() {
         val intent = Intent(this, kondisireproduksi::class.java)
         intent.putExtra("userId", userId)
@@ -68,8 +64,10 @@ class preferensi_pengguna : AppCompatActivity() {
         finish()
     }
 
+    // ================= SIMPAN PREFERENSI =================
     private fun simpanPreferensi() {
-        if (radio1.checkedRadioButtonId == -1 ||
+        if (
+            radio1.checkedRadioButtonId == -1 ||
             radio2.checkedRadioButtonId == -1 ||
             radio3.checkedRadioButtonId == -1 ||
             radio4.checkedRadioButtonId == -1
@@ -78,18 +76,21 @@ class preferensi_pengguna : AppCompatActivity() {
             return
         }
 
+        val preferensi1 = getRadioText(radio1)
+        val preferensi2 = getRadioText(radio2)
+        val preferensi3 = getRadioText(radio3)
+        val preferensi4 = getRadioText(radio4)
+
         val data = mapOf(
-            "Alat kontrasepsi jangka panjang" to findViewById<RadioButton>(radio1.checkedRadioButtonId).text.toString(),
-            "Lupa minum pil setiap hari" to findViewById<RadioButton>(radio2.checkedRadioButtonId).text.toString(),
-            "Butuhkan perlindungan infeksi (IMS/HIV)" to findViewById<RadioButton>(radio3.checkedRadioButtonId).text.toString(),
-            "(implan/AKDR)" to findViewById<RadioButton>(radio4.checkedRadioButtonId).text.toString(),
+            "preferensi1" to preferensi1,
+            "preferensi2" to preferensi2,
+            "preferensi3" to preferensi3,
+            "preferensi4" to preferensi4,
             "timestamp" to System.currentTimeMillis()
         )
 
         dbRef.updateChildren(data)
             .addOnSuccessListener {
-                Toast.makeText(this, "Preferensi berhasil disimpan", Toast.LENGTH_SHORT).show()
-
                 val intent = Intent(this, HasilRekomendasiActivity::class.java)
                 intent.putExtra("userId", userId)
                 startActivity(intent)
@@ -98,5 +99,11 @@ class preferensi_pengguna : AppCompatActivity() {
             .addOnFailureListener {
                 Toast.makeText(this, "Gagal menyimpan preferensi", Toast.LENGTH_LONG).show()
             }
+    }
+
+    private fun getRadioText(radioGroup: RadioGroup): String {
+        return findViewById<RadioButton>(
+            radioGroup.checkedRadioButtonId
+        ).text.toString()
     }
 }

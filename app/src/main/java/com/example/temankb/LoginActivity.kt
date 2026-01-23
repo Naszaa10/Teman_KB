@@ -2,7 +2,10 @@ package com.example.temankb
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
+import android.text.style.UnderlineSpan
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -14,55 +17,78 @@ import com.google.firebase.database.*
 
 class LoginActivity : AppCompatActivity() {
 
-    private val etEmail by lazy { findViewById<TextInputEditText>(R.id.etEmail) }
-    private val etPassword by lazy { findViewById<TextInputEditText>(R.id.etPassword) }
-    private val btnLogin by lazy { findViewById<MaterialButton>(R.id.btnLogin) }
-    private val tvRegister by lazy { findViewById<TextView>(R.id.tvRegister) }
-    private val progressBar by lazy { findViewById<ProgressBar>(R.id.progressBar) }
+    private lateinit var etEmail: TextInputEditText
+    private lateinit var etPassword: TextInputEditText
+    private lateinit var btnLogin: MaterialButton
+    private lateinit var tvRegister: TextView
+    private lateinit var progressBar: ProgressBar
 
-    private val database: DatabaseReference by lazy {
+    private val database: DatabaseReference =
         FirebaseDatabase.getInstance().reference.child("users")
-    }
-
-    companion object {
-        private const val TAG = "LoginActivity"
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        etEmail = findViewById(R.id.etEmail)
+        etPassword = findViewById(R.id.etPassword)
+        btnLogin = findViewById(R.id.btnLogin)
+        tvRegister = findViewById(R.id.tvRegister)
+        progressBar = findViewById(R.id.progressBar)
+
+        setupRegisterText()
+
         btnLogin.setOnClickListener { loginUser() }
+
         tvRegister.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
     }
 
-    private fun loginUser() {
-        val email = etEmail.text?.toString()?.trim().orEmpty()
-        val password = etPassword.text?.toString()?.trim().orEmpty()
+    // =============================
+    // TEXT "DAFTAR DISINI" BIRU
+    // =============================
+    private fun setupRegisterText() {
+        val text = "Belum punya akun? Daftar disini"
+        val spannable = SpannableString(text)
 
-        when {
-            email.isEmpty() -> {
-                etEmail.error = "Email harus diisi"
-                etEmail.requestFocus()
-                return
-            }
-            password.isEmpty() -> {
-                etPassword.error = "Password harus diisi"
-                etPassword.requestFocus()
-                return
-            }
-        }
+        val start = text.indexOf("Daftar disini")
+        val end = start + "Daftar disini".length
 
-        performLogin(email, password)
+        spannable.setSpan(
+            ForegroundColorSpan(getColor(R.color.klik_register)),
+            start,
+            end,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+        spannable.setSpan(
+            UnderlineSpan(),
+            start,
+            end,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+        tvRegister.text = spannable
     }
 
-    private fun performLogin(email: String, password: String) {
+    // =============================
+    // LOGIN USER
+    // =============================
+    private fun loginUser() {
+        val email = etEmail.text.toString().trim().lowercase()
+        val password = etPassword.text.toString().trim()
+
+        if (email.isEmpty() || password.isEmpty()) {
+            showToast("Email dan password wajib diisi")
+            return
+        }
+
         showLoading(true)
 
         database.orderByChild("email").equalTo(email)
             .addListenerForSingleValueEvent(object : ValueEventListener {
+
                 override fun onDataChange(snapshot: DataSnapshot) {
                     showLoading(false)
 
@@ -71,7 +97,35 @@ class LoginActivity : AppCompatActivity() {
                         return
                     }
 
-                    checkPassword(snapshot, password)
+                    for (data in snapshot.children) {
+                        val user = data.getValue(User::class.java)
+
+                        if (user != null && user.password == password) {
+
+                            // =============================
+                            // CATAT LOGIN HARIAN (HANYA USER)
+                            // =============================
+                            if (user.role == "user") {
+                                database.child(data.key!!)
+                                    .child("lastLogin")
+                                    .setValue(System.currentTimeMillis())
+                            }
+
+                            val intent = if (user.role == "admin") {
+                                Intent(this@LoginActivity, admin::class.java)
+                            } else {
+                                Intent(this@LoginActivity, MainActivity::class.java)
+                            }
+
+                            intent.putExtra("EMAIL_LOGIN", user.email)
+
+                            startActivity(intent)
+                            finish()
+                            return
+                        }
+                    }
+
+                    showToast("Password salah")
                 }
 
                 override fun onCancelled(error: DatabaseError) {
@@ -81,35 +135,12 @@ class LoginActivity : AppCompatActivity() {
             })
     }
 
-    private fun checkPassword(snapshot: DataSnapshot, password: String) {
-        for (userSnap in snapshot.children) {
-            val user = userSnap.getValue(User::class.java)?.copy(
-                userId = userSnap.key   // 🔑 WAJIB
-            )
-
-            if (user != null && user.password == password) {
-                showToast("Login berhasil, selamat datang ${user.name}")
-                navigateToProfil(user)
-                return
-            }
-        }
-
-        showToast("Password salah")
-    }
-
-    private fun navigateToProfil(user: User) {
-        val intent = Intent(this, MainActivity::class.java)
-        intent.putExtra("EMAIL_LOGIN", user.email)   // 🔑 KONSISTEN
-        startActivity(intent)
-        finish()
-    }
-
     private fun showLoading(show: Boolean) {
         progressBar.visibility = if (show) View.VISIBLE else View.GONE
         btnLogin.isEnabled = !show
     }
 
-    private fun showToast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    private fun showToast(msg: String) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
     }
 }

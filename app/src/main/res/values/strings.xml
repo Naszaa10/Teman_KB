@@ -1,24 +1,19 @@
 <resources>
     <string name="app_name">Teman KB</string>
 
-    <string name="KB">
-        Keluarga Berencana (KB) adalah upaya untuk mengatur jumlah dan jarak kelahiran anak dengan menggunakan metode kontrasepsi, agar tercapai keluarga yang sehat, sejahtera, dan berkualitas.
-    </string>
+    <!-- Pengertian KB -->
+    <string name="KB">Keluarga Berencana (KB) adalah upaya untuk mengatur jumlah dan jarak kelahiran anak dengan menggunakan metode kontrasepsi, agar tercapai keluarga yang sehat, sejahtera, dan berkualitas.</string>
 
-    <string name="Tujuan_KB">
-         • Mencegah kehamilan yang tidak direncanakan\n• Mengatur jarak kehamilan\n• Menjaga kesehatan ibu dan anak\n• Meningkatkan kesejahteraan keluarga"
-     </string>
+    <!-- Tujuan KB -->
+    <string name="Tujuan_KB">• Mencegah kehamilan yang tidak direncanakan\n\n• Mengatur jarak kehamilan\n\n• Menjaga kesehatan ibu dan anak\n\n• Meningkatkan kesejahteraan keluarga</string>
 
-    <string name="Jenis_Metode_KB">
-         • Kb hormonal: Pil KB, Suntik Kb, Implan\n• KB non-hormonal: Kondom, IUD (Spiral). Metode alami \n• KB Permanen: Tubektomi dan Vasektomi\n"
-     </string>
+    <!-- Jenis Metode KB -->
+    <string name="Jenis_Metode_KB">• KB Hormonal: Pil KB, Suntik KB, Implan\n\n• KB Non-Hormonal: Kondom, IUD (Spiral), Metode Alami\n\n• KB Permanen: Tubektomi dan Vasektomi</string>
 
-    <string name="manfaat_KB">
-         • Menurunkan risiko kehamilan berisiko\n• Membantu perencanaan masa depan keluarga \n• Mendukung program kesehatan ibu daan anak\n"
-     </string>
+    <!-- Manfaat KB -->
+    <string name="manfaat_KB">• Menurunkan risiko kehamilan berisiko tinggi\n\n• Membantu perencanaan masa depan keluarga\n\n• Mendukung program kesehatan ibu dan anak</string>
 
-    <string name="riwayatmedis">
-         1. Tekanan darah tinggi berat (>180/110)\n2. Penyakit Jantung \n3. Gangguan pembekuan darah\n"
-     </string>
+    <!-- Riwayat Medis -->
+    <string name="riwayatmedis">1. Tekanan darah tinggi berat (>180/110)\n\n2. Penyakit Jantung\n\n3. Gangguan pembekuan darah</string>
 
 </resources>

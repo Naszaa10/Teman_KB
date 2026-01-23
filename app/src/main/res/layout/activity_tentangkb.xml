@@ -5,264 +5,405 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg"
+    android:scrollbars="none"
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="24dp"
         tools:context=".tentangkb">
+
+        <!-- Back Button -->
         <ImageView
             android:id="@+id/btnBack"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:padding="4dp"
             android:contentDescription="Back"
             android:src="@drawable/back"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.068"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
+        <!-- Header Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/headerCard"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:fontFamily="@font/lato_bold"
-            android:text="Apa Itu KB ?"
-            android:textColor="#000000"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.155"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card1"
-            android:layout_width="355dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:padding="12dp"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="15dp"
-            app:cardElevation="10dp"
+            android:layout_marginTop="24dp"
+            app:cardBackgroundColor="@color/tombol"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-            tools:ignore="MissingConstraints">
+            app:layout_constraintTop_toBottomOf="@id/btnBack">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="338dp"
-                android:layout_height="166dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp"
+                android:gravity="center">
 
                 <TextView
-                    android:id="@+id/kb"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop="16dp"
-                    android:text="1. Pengertian KB"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:text="📚"
+                    android:textSize="40sp" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="Apa Itu KB?"
+                    android:textColor="@android:color/white"
+                    android:textSize="28sp"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.093"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:letterSpacing="0.01" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="Panduan lengkap tentang Keluarga Berencana"
+                    android:textColor="#E0FFFFFF"
+                    android:textSize="14sp"
+                    android:gravity="center" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Section Header -->
+        <TextView
+            android:id="@+id/sectionInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="📖 Informasi KB"
+            android:textColor="#1A1A1A"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/headerCard" />
+
+        <!-- CARD 1 - Pengertian KB -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="3dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sectionInfo">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <View
+                        android:layout_width="4dp"
+                        android:layout_height="24dp"
+                        android:background="@color/tombol"
+                        android:layout_marginEnd="12dp" />
+
+                    <TextView
+                        android:id="@+id/kb"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="1. Pengertian KB"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:letterSpacing="0.01" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="💡"
+                        android:textSize="24sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="#E0E0E0" />
 
                 <TextView
                     android:id="@+id/tvkb"
-                    android:layout_width="308dp"
-                    android:layout_height="100dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/KB"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:textStyle="normal"
-                    app:layout_constraintEnd_toEndOf="@+id/kb"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/kb"
-                    app:layout_constraintTop_toBottomOf="@+id/kb" />
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card2"
-            android:layout_width="355dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:padding="12dp"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="15dp"
-            app:cardElevation="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/card1"
-            tools:ignore="MissingConstraints">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="338dp"
-                android:layout_height="166dp">
-
-                <TextView
-                    android:id="@+id/tjkb"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop="16dp"
-                    android:text="2. Tujuan KB"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.093"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:text="@string/KB"
+                    android:textSize="15sp"
+                    android:lineSpacingExtra="6dp"
+                    android:textColor="#424242"
+                    android:justificationMode="inter_word" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- CARD 2 - Tujuan KB -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="3dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@id/card1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <View
+                        android:layout_width="4dp"
+                        android:layout_height="24dp"
+                        android:background="@color/tombol"
+                        android:layout_marginEnd="12dp" />
+
+                    <TextView
+                        android:id="@+id/tjkb"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="2. Tujuan KB"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        android:letterSpacing="0.01" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🎯"
+                        android:textSize="24sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="#E0E0E0" />
 
                 <TextView
                     android:id="@+id/tujuankb"
-                    android:layout_width="314dp"
-                    android:layout_height="100dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/Tujuan_KB"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:textStyle="normal"
-                    app:layout_constraintEnd_toEndOf="@+id/tjkb"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/tjkb"
-                    app:layout_constraintTop_toBottomOf="@+id/tjkb" />
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card3"
-            android:layout_width="355dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:padding="12dp"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="15dp"
-            app:cardElevation="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/card2"
-            tools:ignore="MissingConstraints">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="338dp"
-                android:layout_height="166dp">
-
-                <TextView
-                    android:id="@+id/jmkb"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop="16dp"
-                    android:text="3. Jenis Metode KB"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.093"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:text="@string/Tujuan_KB"
+                    android:textSize="15sp"
+                    android:lineSpacingExtra="6dp"
+                    android:textColor="#424242"
+                    android:justificationMode="inter_word" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- CARD 3 - Jenis Metode KB -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="3dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@id/card2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <View
+                        android:layout_width="4dp"
+                        android:layout_height="24dp"
+                        android:background="@color/tombol"
+                        android:layout_marginEnd="12dp" />
+
+                    <TextView
+                        android:id="@+id/jmkb"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="3. Jenis Metode KB"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        android:letterSpacing="0.01" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="⚕️"
+                        android:textSize="24sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="#E0E0E0" />
 
                 <TextView
                     android:id="@+id/metodekb"
-                    android:layout_width="289dp"
-                    android:layout_height="91dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/Jenis_Metode_KB"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:textStyle="normal"
-                    app:layout_constraintEnd_toEndOf="@+id/jmkb"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/jmkb"
-                    app:layout_constraintTop_toBottomOf="@+id/jmkb" />
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card4"
-            android:layout_width="355dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:padding="12dp"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="15dp"
-            app:cardElevation="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/card3"
-            tools:ignore="MissingConstraints">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="338dp"
-                android:layout_height="166dp">
-
-                <TextView
-                    android:id="@+id/mfkb"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop="16dp"
-                    android:text="4. Manfaat KB"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.093"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:text="@string/Jenis_Metode_KB"
+                    android:textSize="15sp"
+                    android:lineSpacingExtra="6dp"
+                    android:textColor="#424242"
+                    android:justificationMode="inter_word" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- CARD 4 - Manfaat KB -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="3dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@id/card3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <View
+                        android:layout_width="4dp"
+                        android:layout_height="24dp"
+                        android:background="@color/tombol"
+                        android:layout_marginEnd="12dp" />
+
+                    <TextView
+                        android:id="@+id/mfkb"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="4. Manfaat KB"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        android:letterSpacing="0.01" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="✨"
+                        android:textSize="24sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="#E0E0E0" />
 
                 <TextView
                     android:id="@+id/manfaatkb"
-                    android:layout_width="314dp"
-                    android:layout_height="100dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="@string/Tujuan_KB"
-                    android:textColor="@color/black"
                     android:textSize="15sp"
-                    android:textStyle="normal"
-                    app:layout_constraintEnd_toEndOf="@+id/mfkb"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/mfkb"
-                    app:layout_constraintTop_toBottomOf="@+id/mfkb" />
+                    android:lineSpacingExtra="6dp"
+                    android:textColor="#424242"
+                    android:justificationMode="inter_word" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
-
-        <Button
-            android:id="@+id/btnlanjutkb"
-            android:layout_width="355dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            app:cornerRadius="8dp"
-            android:backgroundTint="@color/tombol"
-            android:layout_marginBottom="20dp"
-            android:text="Lanjut"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <!-- Divider -->
+        <View
+            android:id="@+id/dividerButton"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="32dp"
+            android:background="#E0E0E0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/card4" />
+
+        <!-- BUTTON -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/buttonContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="@color/tombol"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dividerButton">
+
+            <Button
+                android:id="@+id/btnlanjutkb"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:background="?attr/selectableItemBackground"
+                android:text="Lanjut"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:textAllCaps="false"
+                android:stateListAnimator="@null"
+                android:drawableEnd="@android:drawable/ic_media_play"
+                android:drawableTint="@android:color/white"
+                android:paddingEnd="24dp"
+                android:paddingStart="24dp" />
+        </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

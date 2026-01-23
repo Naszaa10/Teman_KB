@@ -6,205 +6,368 @@
     android:layout_height="match_parent"
     android:background="@color/bg"
     android:fillViewport="true"
-    tools:layout_editor_absoluteX="0dp"
-    tools:layout_editor_absoluteY="24dp">
-
+    android:scrollbars="none">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="24dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="24dp"
         tools:context=".preferensi_pengguna">
+
+        <!-- Back Button -->
         <ImageView
             android:id="@+id/btnBack"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:padding="4dp"
             android:contentDescription="Back"
             android:src="@drawable/back"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.068"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
-        <!-- ================= JUDUL ================= -->
-
-        <!-- ================= PERTANYAAN 6 ================= -->
-        <TextView
-            android:id="@+id/tvTitlePage2"
-            android:layout_width="wrap_content"
+        <!-- Header Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/headerCard"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="Riwayat Kesehatan"
-            android:textSize="36sp"
-            android:textStyle="bold"
+            app:cardBackgroundColor="@color/tombol"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/btnBack">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📝"
+                    android:textSize="32sp" />
+
+                <TextView
+                    android:id="@+id/tvTitlePage2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Riwayat Kesehatan"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Preferensi kontrasepsi Anda"
+                    android:textColor="#E0FFFFFF"
+                    android:textSize="13sp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Section Header -->
         <TextView
-            android:id="@+id/tvQ6"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="1. Apakah Anda ingin alat kontrasepsi jangka panjang ?"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTitlePage2" />
-
-        <RadioGroup
-            android:id="@+id/pref1"
+            android:id="@+id/sectionPreferensi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:orientation="vertical"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvQ6">
-
-            <RadioButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Ya"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="132dp" />
-
-            <RadioButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Tidak"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="180dp" />
-        </RadioGroup>
-
-        <!-- ================= PERTANYAAN 7 ================= -->
-        <TextView
-            android:id="@+id/tvQ7"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="2. Apakah Anda sering lupa minum pil setiap hari ?"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/pref1" />
-
-        <RadioGroup
-            android:id="@+id/pref2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:orientation="vertical"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvQ7">
-
-            <RadioButton
-                android:text="Ya"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="267dp" />
-
-            <RadioButton
-                android:text="Tidak"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="315dp" />
-        </RadioGroup>
-
-        <!-- ================= PERTANYAAN 8 ================= -->
-        <TextView
-            android:id="@+id/tvQ8"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="3. Apakah anda membutuhkan perlindungan terhadap Infeksi Menular Seksual (IMS/HIV) ?"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/pref2" />
-
-        <RadioGroup
-            android:id="@+id/pref3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:orientation="vertical"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvQ8">
-
-            <RadioButton
-                android:text="Ya"
-                tools:layout_editor_absoluteX="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:layout_editor_absoluteY="403dp" />
-
-            <RadioButton
-                android:text="Tidak"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="451dp" />
-        </RadioGroup>
-
-        <!-- ================= PERTANYAAN 9 ================= -->
-        <TextView
-            android:id="@+id/tvQ9"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="4. Apakah Anda nyaman dengan pemasang alat didalam tubuh (implan/AKDR) ?"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/pref3" />
-
-        <RadioGroup
-            android:id="@+id/pref4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:orientation="vertical"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvQ9">
-
-            <RadioButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Ya"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="539dp" />
-
-            <RadioButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Tidak"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="587dp" />
-        </RadioGroup>
-
-        <!-- ================= BUTTON NEXT ================= -->
-        <Button
-            android:id="@+id/btnPreferensi"
-            android:layout_width="355dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            app:cornerRadius="8dp"
-            android:backgroundTint="@color/tombol"
-            android:layout_marginBottom="20dp"
-            android:text="Lanjut"
+            android:layout_marginTop="28dp"
+            android:text="💡 Preferensi Anda"
+            android:textColor="#1A1A1A"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/headerCard" />
+
+        <!-- ================= PERTANYAAN 1 ================= -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardQuestion1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="3dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/pref4" />
+            app:layout_constraintTop_toBottomOf="@id/sectionPreferensi">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tvQ6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="1. Apakah Anda ingin alat kontrasepsi jangka panjang ?"
+                    android:textColor="#424242"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:id="@+id/pref1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:minHeight="48dp"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:text="Ya"
+                        android:textSize="15sp" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:minHeight="48dp"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:text="Tidak"
+                        android:textSize="15sp" />
+                </RadioGroup>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- ================= PERTANYAAN 2 ================= -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardQuestion2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="3dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardQuestion1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tvQ7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="2. Apakah Anda sering lupa minum pil setiap hari ?"
+                    android:textColor="#424242"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:id="@+id/pref2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:minHeight="48dp"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:text="Ya"
+                        android:textSize="15sp" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:minHeight="48dp"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:text="Tidak"
+                        android:textSize="15sp" />
+                </RadioGroup>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- ================= PERTANYAAN 3 ================= -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardQuestion3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="3dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardQuestion2">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tvQ8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="3. Apakah anda membutuhkan perlindungan terhadap Infeksi Menular Seksual (IMS/HIV) ?"
+                    android:textColor="#424242"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:id="@+id/pref3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:minHeight="48dp"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:text="Ya"
+                        android:textSize="15sp" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:minHeight="48dp"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:text="Tidak"
+                        android:textSize="15sp" />
+                </RadioGroup>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- ================= PERTANYAAN 4 ================= -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardQuestion4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="3dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardQuestion3">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tvQ9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="4. Apakah Anda nyaman dengan pemasang alat didalam tubuh (implan/AKDR) ?"
+                    android:textColor="#424242"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:id="@+id/pref4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:minHeight="48dp"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:text="Ya"
+                        android:textSize="15sp" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:minHeight="48dp"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:text="Tidak"
+                        android:textSize="15sp" />
+                </RadioGroup>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Divider -->
+        <View
+            android:id="@+id/dividerButton"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="32dp"
+            android:background="#E0E0E0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardQuestion4" />
+
+        <!-- ================= BUTTON NEXT ================= -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/buttonContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="@color/tombol"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dividerButton">
+
+            <Button
+                android:id="@+id/btnPreferensi"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:background="?attr/selectableItemBackground"
+                android:text="Lanjut"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:textAllCaps="false"
+                android:stateListAnimator="@null"
+                android:drawableEnd="@android:drawable/ic_media_play"
+                android:drawableTint="@android:color/white"
+                android:paddingEnd="24dp"
+                android:paddingStart="24dp" />
+        </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

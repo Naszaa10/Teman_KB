@@ -62,30 +62,18 @@ class kondisireproduksi : AppCompatActivity() {
             .child("kondisi_medis")
             .child(userId!!)
 
-        // ===== BACK IMAGE =====
-        btnBack.setOnClickListener {
-            kembaliKeProfil()
-        }
+        // ===== BACK =====
+        btnBack.setOnClickListener { kembaliKeProfil() }
 
-        // ===== BACK HP =====
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 kembaliKeProfil()
             }
         })
 
-        // ===== NEXT =====
         btnNext.setOnClickListener {
             validasiDanSimpan()
         }
-    }
-
-    // ================= BACK KE PROFIL =================
-    private fun kembaliKeProfil() {
-        val intent = Intent(this, ProfilPenggunaActivity::class.java)
-        intent.putExtra("userId", userId)
-        startActivity(intent)
-        finish()
     }
 
     // ================= VALIDASI =================
@@ -100,42 +88,36 @@ class kondisireproduksi : AppCompatActivity() {
             return
         }
 
-        val menyusui = getRadioText(rgMenyusui)
-        val usiaBayi = getRadioText(rgUsiaBayi)
-        val usia35 = getRadioText(rgUsia35)
-        val perokok = getRadioText(rgPerokok)
+        val kondisi4 = getRadioText(rgMenyusui)
+        val kondisi5 = getRadioText(rgUsiaBayi)
+        val kondisi6 = getRadioText(rgUsia35)
+        val kondisi7 = getRadioText(rgPerokok)
 
-        val kondisiTambahan = mutableListOf<String>()
-        if (chb1.isChecked) kondisiTambahan.add(chb1.text.toString())
-        if (chb2.isChecked) kondisiTambahan.add(chb2.text.toString())
-        if (chb3.isChecked) kondisiTambahan.add(chb3.text.toString())
-        if (chb4.isChecked) kondisiTambahan.add(chb4.text.toString())
-        if (chb5.isChecked) kondisiTambahan.add(chb5.text.toString())
-        if (chb6.isChecked) kondisiTambahan.add(chb6.text.toString())
+        val kondisi8 = mutableListOf<String>()
+        if (chb1.isChecked) kondisi8.add(chb1.text.toString())
+        if (chb2.isChecked) kondisi8.add(chb2.text.toString())
+        if (chb3.isChecked) kondisi8.add(chb3.text.toString())
+        if (chb4.isChecked) kondisi8.add(chb4.text.toString())
+        if (chb5.isChecked) kondisi8.add(chb5.text.toString())
+        if (chb6.isChecked) kondisi8.add(chb6.text.toString())
 
-        simpanKeFirebase(
-            menyusui,
-            usiaBayi,
-            usia35,
-            perokok,
-            kondisiTambahan
-        )
+        simpanKeFirebase(kondisi4, kondisi5, kondisi6, kondisi7, kondisi8)
     }
 
-    // ================= SIMPAN =================
+    // ================= SIMPAN (FIX KEY) =================
     private fun simpanKeFirebase(
-        menyusui: String,
-        usiaBayi: String,
-        usia35: String,
-        perokok: String,
-        kondisiTambahan: List<String>
+        kondisi4: String,
+        kondisi5: String,
+        kondisi6: String,
+        kondisi7: String,
+        kondisi8: List<String>
     ) {
         val dataUpdate = mapOf(
-            "menyusui" to menyusui,
-            "usia_bayi_kurang_6_bulan" to usiaBayi,
-            "usia_diatas_35" to usia35,
-            "perokok" to perokok,
-            "kondisi_tambahan" to kondisiTambahan,
+            "kondisi4" to kondisi4,
+            "kondisi5" to kondisi5,
+            "kondisi6" to kondisi6,
+            "kondisi7" to kondisi7,
+            "kondisi8" to kondisi8,
             "timestamp" to System.currentTimeMillis()
         )
 
@@ -151,7 +133,13 @@ class kondisireproduksi : AppCompatActivity() {
             }
     }
 
-    // ================= HELPER =================
+    private fun kembaliKeProfil() {
+        val intent = Intent(this, ProfilPenggunaActivity::class.java)
+        intent.putExtra("userId", userId)
+        startActivity(intent)
+        finish()
+    }
+
     private fun getRadioText(radioGroup: RadioGroup): String {
         return findViewById<RadioButton>(
             radioGroup.checkedRadioButtonId

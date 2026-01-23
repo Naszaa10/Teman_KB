@@ -42,7 +42,7 @@ class ProfilPenggunaActivity : AppCompatActivity() {
 
         // ==== AMBIL EMAIL DARI LOGIN ====
         userEmail = intent.getStringExtra("EMAIL_LOGIN")
-        if (userEmail == null) {
+        if (userEmail.isNullOrEmpty()) {
             Toast.makeText(this, "Email tidak ditemukan", Toast.LENGTH_SHORT).show()
             finish()
             return
@@ -55,21 +55,28 @@ class ProfilPenggunaActivity : AppCompatActivity() {
         }
     }
 
-    // 🔹 Ambil userId & nama
+    // ================= AMBIL USER =================
     private fun ambilUserDariFirebase(email: String) {
-        FirebaseDatabase.getInstance().reference.child("users")
-            .orderByChild("email").equalTo(email)
+        FirebaseDatabase.getInstance().reference
+            .child("users")
+            .orderByChild("email")
+            .equalTo(email)
             .addListenerForSingleValueEvent(object : ValueEventListener {
+
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (!snapshot.exists()) {
-                        Toast.makeText(this@ProfilPenggunaActivity, "User tidak ditemukan", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this@ProfilPenggunaActivity,
+                            "User tidak ditemukan",
+                            Toast.LENGTH_SHORT
+                        ).show()
                         finish()
                         return
                     }
 
                     for (userSnap in snapshot.children) {
                         userId = userSnap.key
-                        val nama = userSnap.child("name").value.toString()
+                        val nama = userSnap.child("name").value?.toString()
                         inputNama.setText(nama)
                         break
                     }
@@ -79,7 +86,7 @@ class ProfilPenggunaActivity : AppCompatActivity() {
             })
     }
 
-    // 🔹 VALIDASI INPUT
+    // ================= VALIDASI =================
     private fun validasiDanSimpan() {
         val nama = inputNama.text.toString().trim()
         val umurText = inputUmur.text.toString().trim()
@@ -104,18 +111,21 @@ class ProfilPenggunaActivity : AppCompatActivity() {
             rgKanker.checkedRadioButtonId == -1 ||
             rgPendarahan.checkedRadioButtonId == -1
         ) {
-            Toast.makeText(this, "Semua pertanyaan medis wajib diisi", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Semua pertanyaan wajib diisi", Toast.LENGTH_SHORT).show()
             return
         }
 
-        val hamil = findViewById<RadioButton>(rgHamil.checkedRadioButtonId).text.toString()
-        val kanker = findViewById<RadioButton>(rgKanker.checkedRadioButtonId).text.toString()
-        val pendarahan = findViewById<RadioButton>(rgPendarahan.checkedRadioButtonId).text.toString()
+        val hamil =
+            findViewById<RadioButton>(rgHamil.checkedRadioButtonId).text.toString()
+        val kanker =
+            findViewById<RadioButton>(rgKanker.checkedRadioButtonId).text.toString()
+        val pendarahan =
+            findViewById<RadioButton>(rgPendarahan.checkedRadioButtonId).text.toString()
 
         simpanKeFirebase(nama, umur, hamil, kanker, pendarahan)
     }
 
-    // 🔹 SIMPAN & PINDAH PAGE
+    // ================= SIMPAN KE FIREBASE (FIX) =================
     private fun simpanKeFirebase(
         nama: String,
         umur: Int,
@@ -127,9 +137,12 @@ class ProfilPenggunaActivity : AppCompatActivity() {
             "userId" to userId,
             "nama" to nama,
             "usia" to umur,
-            "hamil" to hamil,
-            "kanker_payudara" to kanker,
-            "pendarahan" to pendarahan,
+
+            // 🔥 HARUS SAMA DENGAN MODEL KondisiMedis
+            "kondisi1" to hamil,
+            "kondisi2" to kanker,
+            "kondisi3" to pendarahan,
+
             "timestamp" to System.currentTimeMillis()
         )
 
@@ -142,7 +155,6 @@ class ProfilPenggunaActivity : AppCompatActivity() {
                 val intent = Intent(this, kondisireproduksi::class.java)
                 intent.putExtra("userId", userId)
                 startActivity(intent)
-                // ❌ JANGAN finish()
             }
             .addOnFailureListener {
                 Toast.makeText(this, "Gagal menyimpan data", Toast.LENGTH_SHORT).show()

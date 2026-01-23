@@ -5,332 +5,516 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:scrollbars="none">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="24dp"
         tools:context=".kondisireproduksi">
+
+        <!-- Back Button -->
         <ImageView
             android:id="@+id/btnBack"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:padding="4dp"
             android:contentDescription="Back"
             android:src="@drawable/back"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.068"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!-- Header Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/headerCard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:cardBackgroundColor="@color/tombol"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnBack">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🤱"
+                    android:textSize="32sp" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="Kondisi Reproduksi"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Informasi kesehatan reproduksi Anda"
+                    android:textColor="#E0FFFFFF"
+                    android:textSize="13sp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Section: Kondisi Menyusui -->
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/sectionMenyusui"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:fontFamily="@font/lato_bold"
-            android:text="Kondisi Reproduksi"
-            android:textColor="@color/black"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.155"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/kb1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginTop="15dp"
-            android:text="1. Apakah Anda Sedang Menyusui ?"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.151"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-        <RadioGroup
-            android:id="@+id/radioGroup1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.096"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/kb1">
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:text="Ya"
-                android:textSize="12sp"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="432dp" />
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:text="Tidak"
-                android:textSize="12sp"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="480dp" />
-        </RadioGroup>
-
-        <TextView
-            android:id="@+id/kb2"
-            android:layout_width="306dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginTop="5dp"
-            android:text="2. (Jika menyusui) Apakkah usia bayi kurang\n     dari 6 bulan ?"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.247"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radioGroup1" />
-
-        <RadioGroup
-            android:id="@+id/radioGroup2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.096"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/kb2">
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:text="Ya"
-                android:textSize="12sp"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="432dp" />
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:text="Tidak"
-                android:textSize="12sp"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="480dp" />
-        </RadioGroup>
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/lato_bold"
-            android:layout_marginTop="15dp"
-            android:text="Kondisi Reproduksi"
-            android:textColor="@color/black"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.198"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radioGroup2" />
-
-        <TextView
-            android:id="@+id/kb3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginTop="15dp"
-            android:text="1. Apakah usia Anda lebih dari 35 tahun ?"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.244"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-        <RadioGroup
-            android:id="@+id/radioGroup3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.096"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/kb3">
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:text="Ya"
-                android:textSize="12sp"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="432dp" />
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:text="Tidak"
-                android:textSize="12sp"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="480dp" />
-        </RadioGroup>
-
-        <TextView
-            android:id="@+id/kb4"
-            android:layout_width="306dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginTop="5dp"
-            android:text="2. Apakah Anda seorang perokok aktif ?"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.314"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radioGroup3" />
-
-        <RadioGroup
-            android:id="@+id/radioGroup4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.096"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/kb4">
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:text="Ya"
-                android:textSize="12sp"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="432dp" />
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:text="Tidak"
-                android:textSize="12sp"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="480dp" />
-        </RadioGroup>
-
-        <CheckBox
-            android:id="@+id/chb1"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:checked="false"
-            android:text="Tekanan darah tinggi berat (>180/110)"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.208"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/kb5"
-            tools:ignore="TouchTargetSizeCheck" />
-
-        <TextView
-            android:id="@+id/kb5"
-            android:layout_width="306dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginTop="4dp"
-            android:text="3. Apakah Anda memiliki salah satu kondisi \n    berikut ? (boleh multi-pilih)"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.323"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radioGroup4" />
-
-        <CheckBox
-            android:id="@+id/chb2"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:checked="false"
-            android:text="Penyakit Jantung"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.12"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/chb1" />
-
-        <CheckBox
-            android:id="@+id/chb3"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:checked="false"
-            android:text="Gangguan pembekuan darah"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.155"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/chb2" />
-
-        <CheckBox
-            android:id="@+id/chb4"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:checked="false"
-            android:text="Migrain Berat"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.111"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/chb3" />
-
-        <CheckBox
-            android:id="@+id/chb5"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:checked="false"
-            android:text="Daibetes dengan komplikasi"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.153"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/chb4" />
-
-        <CheckBox
-            android:id="@+id/chb6"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:checked="false"
-            android:text="Tidak Ada"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.105"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/chb5" />
-
-        <Button
-            android:id="@+id/btnReproduksi"
-            android:layout_width="355dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            app:cornerRadius="8dp"
-            android:backgroundTint="@color/tombol"
-            android:layout_marginBottom="20dp"
-            android:text="Lanjut"
+            android:layout_marginTop="28dp"
+            android:text="🍼 Status Menyusui"
+            android:textColor="#1A1A1A"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/headerCard" />
+
+        <!-- Pertanyaan 1 -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardQuestion1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="3dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/chb6" />
+            app:layout_constraintTop_toBottomOf="@id/sectionMenyusui">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/kb1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="1. Apakah Anda Sedang Menyusui ?"
+                    android:textColor="#424242"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:id="@+id/radioGroup1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:minHeight="48dp"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:text="Ya"
+                        android:textSize="15sp" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:minHeight="48dp"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:text="Tidak"
+                        android:textSize="15sp" />
+                </RadioGroup>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Pertanyaan 2 -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardQuestion2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="3dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardQuestion1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/kb2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="2. (Jika menyusui) Apakah usia bayi kurang dari 6 bulan ?"
+                    android:textColor="#424242"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:id="@+id/radioGroup2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:minHeight="48dp"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:text="Ya"
+                        android:textSize="15sp" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:minHeight="48dp"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:text="Tidak"
+                        android:textSize="15sp" />
+                </RadioGroup>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Section: Kondisi Kesehatan -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/sectionKesehatanCard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="#F5F5F5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardQuestion2">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🏥"
+                        android:textSize="28sp"
+                        android:layout_marginEnd="12dp" />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato_bold"
+                        android:text="Kondisi Kesehatan"
+                        android:textColor="#1A1A1A"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Riwayat kesehatan dan gaya hidup"
+                    android:textColor="#757575"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Pertanyaan 3 -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardQuestion3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="3dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sectionKesehatanCard">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/kb3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="1. Apakah usia Anda lebih dari 35 tahun ?"
+                    android:textColor="#424242"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:id="@+id/radioGroup3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:minHeight="48dp"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:text="Ya"
+                        android:textSize="15sp" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:minHeight="48dp"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:text="Tidak"
+                        android:textSize="15sp" />
+                </RadioGroup>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Pertanyaan 4 -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardQuestion4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="3dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardQuestion3">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/kb4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="2. Apakah Anda seorang perokok aktif ?"
+                    android:textColor="#424242"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:id="@+id/radioGroup4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:minHeight="48dp"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:text="Ya"
+                        android:textSize="15sp" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:minHeight="48dp"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:text="Tidak"
+                        android:textSize="15sp" />
+                </RadioGroup>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Pertanyaan 5 dengan Checkbox -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardQuestion5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="3dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardQuestion4">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/kb5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="3. Apakah Anda memiliki salah satu kondisi berikut ? (boleh multi-pilih)"
+                    android:textColor="#424242"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="12dp">
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chb1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="48dp"
+                        android:text="Tekanan darah tinggi berat (>180/110)"
+                        android:textSize="14sp"
+                        android:paddingStart="8dp" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chb2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="48dp"
+                        android:text="Penyakit Jantung"
+                        android:textSize="14sp"
+                        android:paddingStart="8dp" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chb3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="48dp"
+                        android:text="Gangguan pembekuan darah"
+                        android:textSize="14sp"
+                        android:paddingStart="8dp" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chb4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="48dp"
+                        android:text="Migrain Berat"
+                        android:textSize="14sp"
+                        android:paddingStart="8dp" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chb5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="48dp"
+                        android:text="Diabetes dengan komplikasi"
+                        android:textSize="14sp"
+                        android:paddingStart="8dp" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chb6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="48dp"
+                        android:text="Tidak Ada"
+                        android:textSize="14sp"
+                        android:paddingStart="8dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Divider -->
+        <View
+            android:id="@+id/dividerButton"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="32dp"
+            android:background="#E0E0E0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardQuestion5" />
+
+        <!-- Button -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/buttonContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="@color/tombol"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dividerButton">
+
+            <Button
+                android:id="@+id/btnReproduksi"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:background="?attr/selectableItemBackground"
+                android:text="Lanjut"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:textAllCaps="false"
+                android:stateListAnimator="@null"
+                android:drawableEnd="@android:drawable/ic_media_play"
+                android:drawableTint="@android:color/white"
+                android:paddingEnd="24dp"
+                android:paddingStart="24dp" />
+        </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

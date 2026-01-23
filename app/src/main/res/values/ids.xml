@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="sectionMenyusui" type="id" />
+    <item name="cardQuestion1" type="id" />
+    <item name="cardQuestion2" type="id" />
+    <item name="sectionKesehatanCard" type="id" />
+    <item name="sectionInfo" type="id" />
+</resources>

@@ -1,0 +1,948 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:fillViewport="true"
+    android:scrollbars="none">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="24dp">
+
+        <!-- IUD (AKDR) -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/layoutIUD"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <!-- Header -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="⚕️"
+                        android:textSize="32sp"
+                        android:layout_marginEnd="12dp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="AKDR (IUD)"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Alat Kontrasepsi Dalam Rahim"
+                    android:textSize="16sp"
+                    android:textColor="@color/tombol"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="#E0E0E0" />
+
+                <!-- Pengertian -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="📖 Pengertian"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Alat kontrasepsi yang dipasang di dalam rahim, terdiri dari berbagai jenis seperti Copper T, Copper 7, dan Copper T380A. Memiliki efektivitas tinggi dengan tingkat kegagalan 1-3 kehamilan per 100 wanita per tahun."
+                    android:textSize="14sp"
+                    android:textColor="#424242"
+                    android:lineSpacingExtra="4dp" />
+
+                <!-- Cara Kerja -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="⚙️ Cara Kerja"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="• Mencegah pertemuan sperma dan sel telur\n• Membuat lingkungan rahim tidak cocok untuk implantasi\n• Mengubah lendir serviks"
+                    android:textSize="14sp"
+                    android:textColor="#424242"
+                    android:lineSpacingExtra="4dp" />
+
+                <!-- Keuntungan -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="✅ Keuntungan"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="• Sangat efektif (tingkat kegagalan rendah)\n• Efektif jangka panjang (8 tahun atau lebih)\n• Kesuburan segera kembali setelah diangkat\n• Tidak mengganggu hubungan seksual\n• Cocok untuk ibu menyusui\n• Pemeriksaan ulang hanya sekali setahun"
+                    android:textSize="14sp"
+                    android:textColor="#424242"
+                    android:lineSpacingExtra="4dp" />
+
+                <!-- Efek Samping -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="⚠️ Efek Samping"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="• Perdarahan (menoragia/spotting)\n• Rasa nyeri dan kejang di perut\n• Gangguan pada suami (benang terasa)\n• Kemungkinan ekspulsi (keluar sendiri)"
+                    android:textSize="14sp"
+                    android:textColor="#424242"
+                    android:lineSpacingExtra="4dp" />
+
+                <!-- Yang Boleh -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="👤 Yang Boleh Menggunakan"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="• Usia subur\n• Ingin kontrasepsi jangka panjang\n• Ibu menyusui\n• Tidak ada infeksi setelah keguguran\n• Risiko IMS rendah\n• Tidak ingin menggunakan hormon"
+                    android:textSize="14sp"
+                    android:textColor="#424242"
+                    android:lineSpacingExtra="4dp" />
+
+                <!-- Yang Tidak Boleh -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="🚫 Yang Tidak Boleh Menggunakan"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="• Sedang hamil\n• Peradangan panggul\n• Perdarahan uterus abnormal\n• Karsinoma organ panggul\n• Malformasi rahim\n• Mioma uteri submukosa\n• Dismenore berat"
+                    android:textSize="14sp"
+                    android:textColor="#424242"
+                    android:lineSpacingExtra="4dp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- IMPLAN -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/layoutImplan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <!-- Header -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="💉"
+                        android:textSize="32sp"
+                        android:layout_marginEnd="12dp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="Implan"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Alat Kontrasepsi Bawah Kulit (AKBK)"
+                    android:textSize="16sp"
+                    android:textColor="@color/tombol"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="#E0E0E0" />
+
+                <!-- Pengertian -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="📖 Pengertian"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Alat kontrasepsi yang ditanamkan di bawah kulit berupa kapsul silastik berisi hormon levonorgestrel. Terdiri dari 2 kapsul dengan panjang 44mm, masing-masing diisi 70mg levonorgestrel yang dilepaskan secara difusi."
+                    android:textSize="14sp"
+                    android:textColor="#424242"
+                    android:lineSpacingExtra="4dp" />
+
+                <!-- Jenis -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="📋 Jenis Implan"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="• Norplant: 6 batang, efektif 5 tahun\n• Implanon: 1 batang, efektif 3 tahun\n• Jadena/Indoplant: 2 batang, efektif 3 tahun"
+                    android:textSize="14sp"
+                    android:textColor="#424242"
+                    android:lineSpacingExtra="4dp" />
+
+                <!-- Cara Kerja -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="⚙️ Cara Kerja"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="• Menekan ovulasi\n• Mengentalkan lendir serviks\n• Mengganggu pembentukan endometrium\n• Menekan transportasi sperma"
+                    android:textSize="14sp"
+                    android:textColor="#424242"
+                    android:lineSpacingExtra="4dp" />
+
+                <!-- Keuntungan -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="✅ Keuntungan"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="• Efektivitas sangat tinggi\n• Perlindungan jangka panjang (3-5 tahun)\n• Kesuburan cepat kembali setelah dicabut\n• Tidak mengganggu ASI\n• Tidak mengandung estrogen\n• Mengurangi nyeri haid\n• Mencegah kanker endometrium"
+                    android:textSize="14sp"
+                    android:textColor="#424242"
+                    android:lineSpacingExtra="4dp" />
+
+                <!-- Efek Samping -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="⚠️ Efek Samping"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="• Perubahan pola haid (bercak/tidak teratur)\n• Sakit kepala\n• Berat badan bertambah\n• Nyeri payudara\n• Mual\n• Perubahan perasaan/mood"
+                    android:textSize="14sp"
+                    android:textColor="#424242"
+                    android:lineSpacingExtra="4dp" />
+
+                <!-- Yang Boleh -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="👤 Yang Boleh Menggunakan"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="• Usia reproduksi\n• Sudah/belum memiliki anak\n• Menginginkan kontrasepsi jangka panjang\n• Pasca persalinan (tidak menyusui)\n• Riwayat kehamilan ektopik\n• Tekanan darah tinggi\n• Tidak dapat menggunakan estrogen"
+                    android:textSize="14sp"
+                    android:textColor="#424242"
+                    android:lineSpacingExtra="4dp" />
+
+                <!-- Yang Tidak Boleh -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="🚫 Yang Tidak Boleh Menggunakan"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="• Hamil atau diduga hamil\n• Perdarahan pervagina belum jelas sebabnya\n• Kanker payudara atau riwayat kanker\n• Tidak dapat menerima perubahan pola haid\n• Mioma uterus\n• Gangguan toleransi glukosa"
+                    android:textSize="14sp"
+                    android:textColor="#424242"
+                    android:lineSpacingExtra="4dp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- PIL KB -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/layoutPil"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <!-- Header -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="💊"
+                        android:textSize="32sp"
+                        android:layout_marginEnd="12dp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="Pil KB"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Pil Oral Kombinasi"
+                    android:textSize="16sp"
+                    android:textColor="@color/tombol"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="#E0E0E0" />
+
+                <!-- Pengertian -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="📖 Pengertian"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Pil yang mengandung hormon estrogen dan progesteron. Efektif dan reversibel, harus diminum setiap hari pada waktu yang sama."
+                    android:textSize="14sp"
+                    android:textColor="#424242"
+                    android:lineSpacingExtra="4dp" />
+
+                <!-- Jenis -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="📋 Jenis Pil KB"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="• Monofasik: 21 tablet hormon dosis sama\n• Bifasik: 21 tablet hormon 2 dosis berbeda\n• Trifasik: 21 tablet hormon 3 dosis berbeda\n• Mini Pil: hanya progestin tanpa estrogen"
+                    android:textSize="14sp"
+                    android:textColor="#424242"
+                    android:lineSpacingExtra="4dp" />
+
+                <!-- Keuntungan -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="✅ Keuntungan"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="• Efektivitas tinggi (1 kehamilan/1000 pengguna)\n• Tidak mengganggu hubungan seksual\n• Siklus haid teratur, mencegah anemia\n• Dapat digunakan sejak remaja hingga menopause\n• Kesuburan segera kembali setelah dihentikan\n• Mencegah kanker ovarium dan endometrium"
+                    android:textSize="14sp"
+                    android:textColor="#424242"
+                    android:lineSpacingExtra="4dp" />
+
+                <!-- Efek Samping -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="⚠️ Efek Samping"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="• Mual (terutama 3 bulan pertama)\n• Perdarahan bercak\n• Pusing\n• Berat badan naik sedikit\n• Nyeri payudara\n• Mengurangi produksi ASI\n• Dapat meningkatkan tekanan darah"
+                    android:textSize="14sp"
+                    android:textColor="#424242"
+                    android:lineSpacingExtra="4dp" />
+
+                <!-- Yang Boleh -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="👤 Yang Boleh Menggunakan"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="• Usia reproduksi\n• Telah/belum memiliki anak\n• Menginginkan efektivitas tinggi\n• Setelah melahirkan (tidak menyusui)\n• Nyeri haid atau haid tidak teratur\n• Pasca keguguran\n• Riwayat kehamilan ektopik"
+                    android:textSize="14sp"
+                    android:textColor="#424242"
+                    android:lineSpacingExtra="4dp" />
+
+                <!-- Yang Tidak Boleh -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="🚫 Yang Tidak Boleh Menggunakan"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="• Hamil atau dicurigai hamil\n• Memberi ASI eksklusif\n• Perdarahan pervagina belum jelas sebabnya\n• Penyakit hati akut (hepatitis)\n• Usia >35 tahun dan perokok\n• Riwayat penyakit jantung/stroke\n• Tekanan darah >180/110 mmHg\n• Kanker payudara\n• Migrain dengan aura"
+                    android:textSize="14sp"
+                    android:textColor="#424242"
+                    android:lineSpacingExtra="4dp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- SUNTIK KB -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/layoutSuntik"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <!-- Header -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="💉"
+                        android:textSize="32sp"
+                        android:layout_marginEnd="12dp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="Suntik KB"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Kontrasepsi Suntikan"
+                    android:textSize="16sp"
+                    android:textColor="@color/tombol"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="#E0E0E0" />
+
+                <!-- Jenis -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="📋 Jenis Suntik KB"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="• DMPA (Depo Provera): Sekali setiap 3 bulan, 150mg\n• NET-EN (Noristerat): Sekali setiap 8-12 minggu, 200mg\n• Suntik Kombinasi: Setiap bulan (mengandung estrogen dan progesteron)"
+                    android:textSize="14sp"
+                    android:textColor="#424242"
+                    android:lineSpacingExtra="4dp" />
+
+                <!-- Cara Kerja -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="• Mencegah ovulasi\n• Mengentalkan lendir serviks\n• Membuat endometrium tipis dan atrofi\n• Mempengaruhi transportasi ovum"
+                    android:textSize="14sp"
+                    android:textColor="#424242"
+                    android:lineSpacingExtra="4dp" />
+
+                <!-- Keuntungan -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="✅ Keuntungan"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="• Sangat efektif (0,3 kehamilan/100 pengguna/tahun)\n• Tidak mengganggu hubungan seksual\n• Tidak mengandung estrogen\n• Tidak mempengaruhi ASI\n• Cocok untuk >35 tahun hingga pre-menopause\n• Mencegah kanker endometrium\n• Menurunkan kejadian anemia"
+                    android:textSize="14sp"
+                    android:textColor="#424242"
+                    android:lineSpacingExtra="4dp" />
+
+                <!-- Efek Samping -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="⚠️ Efek Samping"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="• Gangguan haid (amenorea/perdarahan tidak teratur)\n• Peningkatan berat badan\n• Kesuburan terlambat kembali\n• Sakit kepala\n• Jerawat\n• Kekeringan vagina\n• Penurunan libido"
+                    android:textSize="14sp"
+                    android:textColor="#424242"
+                    android:lineSpacingExtra="4dp" />
+
+                <!-- Yang Boleh -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="👤 Yang Boleh Menggunakan"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="• Usia reproduksi\n• Menyusui dan membutuhkan kontrasepsi\n• Setelah melahirkan (tidak menyusui)\n• Setelah abortus\n• Perokok\n• Tekanan darah tinggi\n• Sering lupa minum pil\n• Anemia defisiensi besi"
+                    android:textSize="14sp"
+                    android:textColor="#424242"
+                    android:lineSpacingExtra="4dp" />
+
+                <!-- Yang Tidak Boleh -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="🚫 Yang Tidak Boleh Menggunakan"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="• Hamil atau dicurigai hamil\n• Perdarahan pervagina belum jelas sebabnya\n• Tidak dapat menerima amenorea\n• Kanker payudara atau riwayat kanker\n• Diabetes dengan komplikasi\n• Kanker traktus genitalia"
+                    android:textSize="14sp"
+                    android:textColor="#424242"
+                    android:lineSpacingExtra="4dp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- KONDOM -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/layoutKondom"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <!-- Header -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🛡️"
+                        android:textSize="32sp"
+                        android:layout_marginEnd="12dp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="Kondom"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Alat Kontrasepsi Penghalang"
+                    android:textSize="16sp"
+                    android:textColor="@color/tombol"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="#E0E0E0" />
+
+                <!-- Pengertian -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="📖 Pengertian"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Selubung/sarung karet berbentuk silinder yang dipasang pada penis saat hubungan seksual. Terbuat dari lateks, polyurethane, polyisoprene, kulit domba, atau nitrile."
+                    android:textSize="14sp"
+                    android:textColor="#424242"
+                    android:lineSpacingExtra="4dp" />
+
+                <!-- Jenis -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="📋 Jenis Kondom"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="• Kondom berkontur (bergerigi)\n• Kondom beraroma\n• Kondom tidak beraroma"
+                    android:textSize="14sp"
+                    android:textColor="#424242"
+                    android:lineSpacingExtra="4dp" />
+
+                <!-- Cara Kerja -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="⚙️ Cara Kerja"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="• Menghalangi pertemuan sperma dan sel telur\n• Mengemas sperma di ujung kondom\n• Mencegah sperma masuk saluran reproduksi\n• Mencegah penularan IMS termasuk HIV/AIDS (khusus lateks dan vinil)"
+                    android:textSize="14sp"
+                    android:textColor="#424242"
+                    android:lineSpacingExtra="4dp" />
+
+                <!-- Keuntungan -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="✅ Keuntungan"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="• Murah dan dapat dibeli bebas\n• Tidak perlu pemeriksaan kesehatan khusus\n• PROTEKSI GANDA: mencegah kehamilan DAN IMS/HIV\n• Membantu mencegah kanker serviks\n• Tidak ada efek samping hormonal\n• Tanpa resep dokter"
+                    android:textSize="14sp"
+                    android:textColor="#424242"
+                    android:lineSpacingExtra="4dp" />
+
+                <!-- Keterbatasan -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="⚠️ Keterbatasan"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="• Cara penggunaan mempengaruhi keberhasilan\n• Sedikit mengganggu hubungan seksual\n• Bisa menyebabkan kesulitan mempertahankan ereksi\n• Malu membelinya di tempat umum\n• Kemungkinan alergi lateks"
+                    android:textSize="14sp"
+                    android:textColor="#424242"
+                    android:lineSpacingExtra="4dp" />
+
+                <!-- Yang Boleh -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="👤 Yang Boleh Menggunakan"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="• Semua laki-laki\n• Pasangan yang menginginkan perlindungan dari IMS\n• Pasangan yang menginginkan metode tanpa hormon\n• Sebagai kontrasepsi tambahan/darurat"
+                    android:textSize="14sp"
+                    android:textColor="#424242"
+                    android:lineSpacingExtra="4dp" />
+
+                <!-- Yang Tidak Boleh -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="🚫 Yang Tidak Boleh Menggunakan"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="• Reaksi alergi berat terhadap karet lateks (gunakan jenis non-lateks)"
+                    android:textSize="14sp"
+                    android:textColor="#424242"
+                    android:lineSpacingExtra="4dp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- BUTTON KEMBALI -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/buttonContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="@color/tombol"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutIUD">
+
+            <Button
+                android:id="@+id/btnKembali"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:background="?attr/selectableItemBackground"
+                android:text="Kembali"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:textAllCaps="false"
+                android:stateListAnimator="@null"
+                android:drawableStart="@android:drawable/ic_menu_revert"
+                android:drawableTint="@android:color/white"
+                android:paddingEnd="24dp"
+                android:paddingStart="24dp" />
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
