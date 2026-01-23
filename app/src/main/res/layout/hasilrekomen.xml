@@ -42,14 +42,15 @@
             <Button
                 android:id="@+id/btn"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvkb1"
-                android:layout_marginTop="16dp"
+                android:layout_height="50dp"
                 android:backgroundTint="@color/tombol"
+                android:layout_marginTop="20dp"
                 android:text="Lihat Detail"
                 android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:cornerRadius="8dp"
+                android:layout_below="@id/tvkb1" />
 
         </RelativeLayout>
 

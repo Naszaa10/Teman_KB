@@ -1,6 +1,10 @@
 package com.example.temankb
 
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
+import android.text.style.UnderlineSpan
 import android.util.Patterns
 import android.view.View
 import android.widget.ProgressBar
@@ -27,8 +31,34 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
+        setupRegisterText() // PENTING: biar Login disini jadi biru
+
         btnRegister.setOnClickListener { registerUser() }
         tvLogin.setOnClickListener { finish() }
+    }
+
+    private fun setupRegisterText() {
+        val text = "Sudah punya akun? Login disini"
+        val spannable = SpannableString(text)
+
+        val start = text.indexOf("Login disini")
+        val end = start + "Login disini".length
+
+        spannable.setSpan(
+            ForegroundColorSpan(getColor(R.color.klik_register)),
+            start,
+            end,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+        spannable.setSpan(
+            UnderlineSpan(),
+            start,
+            end,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+        tvLogin.text = spannable
     }
 
     private fun registerUser() {

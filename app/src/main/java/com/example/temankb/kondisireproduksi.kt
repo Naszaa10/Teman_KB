@@ -2,6 +2,7 @@ package com.example.temankb
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.*
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
@@ -14,6 +15,9 @@ class kondisireproduksi : AppCompatActivity() {
     private lateinit var rgUsiaBayi: RadioGroup
     private lateinit var rgUsia35: RadioGroup
     private lateinit var rgPerokok: RadioGroup
+
+    // ===== CARD =====
+    private lateinit var cardUsiaBayi: View
 
     // ===== CHECKBOX =====
     private lateinit var chb1: CheckBox
@@ -39,6 +43,8 @@ class kondisireproduksi : AppCompatActivity() {
         rgUsia35 = findViewById(R.id.radioGroup3)
         rgPerokok = findViewById(R.id.radioGroup4)
 
+        cardUsiaBayi = findViewById(R.id.cardQuestion2)
+
         chb1 = findViewById(R.id.chb1)
         chb2 = findViewById(R.id.chb2)
         chb3 = findViewById(R.id.chb3)
@@ -48,6 +54,9 @@ class kondisireproduksi : AppCompatActivity() {
 
         btnNext = findViewById(R.id.btnReproduksi)
         btnBack = findViewById(R.id.btnBack)
+
+        // ===== DEFAULT =====
+        cardUsiaBayi.visibility = View.GONE
 
         // ===== USER ID =====
         userId = intent.getStringExtra("userId")
@@ -61,6 +70,20 @@ class kondisireproduksi : AppCompatActivity() {
             .reference
             .child("kondisi_medis")
             .child(userId!!)
+
+        // ===== LOGIC MENYUSUI =====
+        rgMenyusui.setOnCheckedChangeListener { _, checkedId ->
+            if (checkedId == -1) return@setOnCheckedChangeListener
+
+            val jawaban = findViewById<RadioButton>(checkedId).text.toString()
+
+            if (jawaban.equals("Ya", true)) {
+                cardUsiaBayi.visibility = View.VISIBLE
+            } else {
+                cardUsiaBayi.visibility = View.GONE
+                rgUsiaBayi.clearCheck()
+            }
+        }
 
         // ===== BACK =====
         btnBack.setOnClickListener { kembaliKeProfil() }
@@ -78,9 +101,8 @@ class kondisireproduksi : AppCompatActivity() {
 
     // ================= VALIDASI =================
     private fun validasiDanSimpan() {
-        if (
-            rgMenyusui.checkedRadioButtonId == -1 ||
-            rgUsiaBayi.checkedRadioButtonId == -1 ||
+
+        if (rgMenyusui.checkedRadioButtonId == -1 ||
             rgUsia35.checkedRadioButtonId == -1 ||
             rgPerokok.checkedRadioButtonId == -1
         ) {
@@ -88,8 +110,15 @@ class kondisireproduksi : AppCompatActivity() {
             return
         }
 
-        val kondisi4 = getRadioText(rgMenyusui)
-        val kondisi5 = getRadioText(rgUsiaBayi)
+        val menyusui = getRadioText(rgMenyusui)
+
+        if (menyusui.equals("Ya", true) && rgUsiaBayi.checkedRadioButtonId == -1) {
+            Toast.makeText(this, "Mohon isi usia bayi", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val kondisi4 = menyusui
+        val kondisi5 = if (menyusui.equals("Ya", true)) getRadioText(rgUsiaBayi) else "-"
         val kondisi6 = getRadioText(rgUsia35)
         val kondisi7 = getRadioText(rgPerokok)
 
@@ -104,7 +133,7 @@ class kondisireproduksi : AppCompatActivity() {
         simpanKeFirebase(kondisi4, kondisi5, kondisi6, kondisi7, kondisi8)
     }
 
-    // ================= SIMPAN (FIX KEY) =================
+    // ================= SIMPAN =================
     private fun simpanKeFirebase(
         kondisi4: String,
         kondisi5: String,
@@ -141,8 +170,7 @@ class kondisireproduksi : AppCompatActivity() {
     }
 
     private fun getRadioText(radioGroup: RadioGroup): String {
-        return findViewById<RadioButton>(
-            radioGroup.checkedRadioButtonId
-        ).text.toString()
+        return findViewById<RadioButton>(radioGroup.checkedRadioButtonId)
+            .text.toString()
     }
 }

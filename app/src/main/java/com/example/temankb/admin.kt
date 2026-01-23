@@ -3,6 +3,8 @@ package com.example.temankb
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -34,7 +36,6 @@ class admin : AppCompatActivity() {
         mulaiJamRealtime()
         setTanggal()
         hitungJumlahUser()
-
         setupSpinner()
     }
 
@@ -63,19 +64,39 @@ class admin : AppCompatActivity() {
                     val role = data.child("role").getValue(String::class.java)
                     if (role == "user") totalUser++
                 }
-                tvJumlahUser.text = "Akun: $totalUser"
+                tvJumlahUser.text = totalUser.toString()
             }
+
             override fun onCancelled(error: DatabaseError) {}
         })
     }
 
-    // ================= SPINNER =================
+    // ================= SPINNER FILTER =================
     private fun setupSpinner() {
+
+        val filterList = listOf(
+            "Hari Ini",
+            "7 Hari Terakhir",
+            "30 Hari Terakhir"
+        )
+
+        val adapter = ArrayAdapter(
+            this,
+            android.R.layout.simple_spinner_item,
+            filterList
+        )
+
+        adapter.setDropDownViewResource(
+            android.R.layout.simple_spinner_dropdown_item
+        )
+
+        spFilter.adapter = adapter
+
         spFilter.onItemSelectedListener =
-            object : android.widget.AdapterView.OnItemSelectedListener {
+            object : AdapterView.OnItemSelectedListener {
 
                 override fun onItemSelected(
-                    parent: android.widget.AdapterView<*>?,
+                    parent: AdapterView<*>?,
                     view: android.view.View?,
                     position: Int,
                     id: Long
@@ -87,11 +108,11 @@ class admin : AppCompatActivity() {
                     }
                 }
 
-                override fun onNothingSelected(parent: android.widget.AdapterView<*>?) {}
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
     }
 
-    // ================= WAKTU RANGE =================
+    // ================= RANGE WAKTU =================
     private fun startOfToday(): Long {
         val cal = Calendar.getInstance()
         cal.set(Calendar.HOUR_OF_DAY, 0)
@@ -113,24 +134,22 @@ class admin : AppCompatActivity() {
 
     // ================= HITUNG PENGUNJUNG =================
     private fun hitungPengunjungHariIni() {
-        val start = startOfToday()
-        hitungByRange(start)
+        hitungByRange(startOfToday())
     }
 
     private fun hitungPengunjung7Hari() {
-        val start = startOfDaysAgo(6) // ⬅️ BEDA DENGAN HARI INI
-        hitungByRange(start)
+        hitungByRange(startOfDaysAgo(6))
     }
 
     private fun hitungPengunjung30Hari() {
-        val start = startOfDaysAgo(29)
-        hitungByRange(start)
+        hitungByRange(startOfDaysAgo(29))
     }
 
     private fun hitungByRange(startTime: Long) {
         db.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 var total = 0
+
                 for (data in snapshot.children) {
                     val role = data.child("role").getValue(String::class.java)
                     val lastLogin =
@@ -140,7 +159,8 @@ class admin : AppCompatActivity() {
                         total++
                     }
                 }
-                tvPengunjung.text = "Pengunjung: $total"
+
+                tvPengunjung.text = total.toString()
             }
 
             override fun onCancelled(error: DatabaseError) {}

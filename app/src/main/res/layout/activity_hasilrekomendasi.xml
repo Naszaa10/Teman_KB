@@ -145,27 +145,22 @@
                             android:textColor="#757575" />
                     </LinearLayout>
 
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@android:drawable/ic_menu_edit"
-                        android:backgroundTint="#BDBDBD" />
                 </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Section Riwayat Medis -->
-        <TextView
-            android:id="@+id/sectionRiwayat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="📋 Riwayat Medis"
-            android:textColor="#1A1A1A"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/card1" />
+<!--        <TextView-->
+<!--            android:id="@+id/sectionRiwayat"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="24dp"-->
+<!--            android:text="📋 Riwayat Medis"-->
+<!--            android:textColor="#1A1A1A"-->
+<!--            android:textSize="18sp"-->
+<!--            android:textStyle="bold"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/card1" />-->
 
         <!-- CARD RIWAYAT MEDIS -->
         <com.google.android.material.card.MaterialCardView
@@ -176,7 +171,7 @@
             app:cardCornerRadius="16dp"
             app:cardElevation="3dp"
             app:cardBackgroundColor="@android:color/white"
-            app:layout_constraintTop_toBottomOf="@id/sectionRiwayat"
+            app:layout_constraintTop_toBottomOf="@id/card1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 

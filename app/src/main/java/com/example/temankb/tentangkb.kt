@@ -16,12 +16,23 @@ class tentangkb : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_tentangkb)
 
+        // ✅ FIX EDGE TO EDGE (INI KUNCINYA)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(
+                v.paddingLeft,
+                v.paddingTop,
+                v.paddingRight,
+                systemBars.bottom + 24 // ⬅️ kasih jarak dari navbar
+            )
+            insets
+        }
+
         val btnBack = findViewById<ImageView>(R.id.btnBack)
         val btnLanjut = findViewById<Button>(R.id.btnlanjutkb)
 
-        // 🔙 BACK → kembali ke MainActivity
         btnBack.setOnClickListener {
-            finish() // ⬅️ INI KUNCINYA
+            finish()
         }
 
         val emailLogin = intent.getStringExtra("EMAIL_LOGIN")
